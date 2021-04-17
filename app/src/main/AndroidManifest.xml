@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.furrycatxd.newsx">
+    package="com.furrycatxd.RocketNews">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -12,13 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsX">
-        <activity android:name=".WebActivity"></activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.furrycatxd.RocketNews.WebActivity"></activity>
+        <activity android:name="com.furrycatxd.RocketNews.MainActivity" />
         <activity
-            android:name=".Genre"
+            android:name="com.furrycatxd.RocketNews.Genre"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MAuthentication"
+            android:name="com.furrycatxd.RocketNews.MAuthentication"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

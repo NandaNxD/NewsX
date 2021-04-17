@@ -1,10 +1,8 @@
-package com.furrycatxd.newsx;
+package com.furrycatxd.RocketNews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 public class MAuthentication extends AppCompatActivity {
     String api_key="115e4b65479f43f29bbdb75f1d9047c0";

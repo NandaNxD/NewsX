@@ -1,4 +1,4 @@
-package com.furrycatxd.newsx;
+package com.furrycatxd.RocketNews;
 
 import org.junit.Test;
 

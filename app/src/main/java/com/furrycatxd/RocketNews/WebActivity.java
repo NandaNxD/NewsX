@@ -1,4 +1,4 @@
-package com.furrycatxd.newsx;
+package com.furrycatxd.RocketNews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
