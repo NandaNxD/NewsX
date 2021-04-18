@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="100dp"
         android:paddingRight="100dp"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -14,13 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsX">
-        <activity android:name="com.furrycatxd.RocketNews.WebActivity"></activity>
-        <activity android:name="com.furrycatxd.RocketNews.MainActivity" />
+        <activity android:name=".WebActivity" />
+        <activity android:name=".MainActivity" />
         <activity
-            android:name="com.furrycatxd.RocketNews.Genre"
+            android:name=".Genre"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.furrycatxd.RocketNews.MAuthentication"
+            android:theme="@style/SplashTheme"
+            android:name=".MAuthentication"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,9 +6,11 @@ import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.TextView;
 
@@ -29,6 +31,8 @@ public class MAuthentication extends AppCompatActivity {
     int RC_SIGN_IN=0;
     String database_email;
     TextView textView;
+
+
     GoogleSignInClient mGoogleSignInClient;
     LottieAnimationView lottieAnimationView;
     SignInButton signInButton;
@@ -74,21 +78,22 @@ public class MAuthentication extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_NewsX);
         setContentView(R.layout.mauthentication);
+
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if(account!=null){
+        if(account!=null) {
             Intent intent;
-            if(database_email!=null){
+            if (database_email != null) {
                 intent = new Intent(getApplicationContext(), MainActivity.class);
-            }
-            else{
+            } else {
                 intent = new Intent(getApplicationContext(), Genre.class);
             }
             startActivity(intent);
             finish();
             finishAndRemoveTask();
         }
-
+//
         signInButton=findViewById(R.id.signInButton);
         lottieAnimationView=findViewById(R.id.lottieAnimation);
         lottieAnimationView.playAnimation();
