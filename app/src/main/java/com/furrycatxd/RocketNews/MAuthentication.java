@@ -106,46 +106,6 @@ public class MAuthentication extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(getApplicationContext(), gso);
 
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-//                if(account!=null){
-//                    Intent intent;
-//                    if(database_email!=null){
-//                        intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    }
-//                    else{
-//                        intent = new Intent(getApplicationContext(), Genre.class);
-//                    }
-//                    startActivity(intent);
-//                    finish();
-//                    finishAndRemoveTask();
-//                }
-//
-//                signInButton=findViewById(R.id.signInButton);
-//                lottieAnimationView=findViewById(R.id.lottieAnimation);
-//                lottieAnimationView.playAnimation();
-//                signInButton.setOnClickListener(v -> {
-//                    switch (v.getId()){
-//                        case R.id.signInButton:
-//                            signIn();
-//                            break;
-//                    }
-//                });
-//
-//                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                        .requestEmail()
-//                        .build();
-//
-//                mGoogleSignInClient = GoogleSignIn.getClient(getApplicationContext(), gso);
-//
-//            }
-//        }).start();
-//
-//
-//
     }
 
 
