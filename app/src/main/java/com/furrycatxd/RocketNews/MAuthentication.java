@@ -1,10 +1,13 @@
 package com.furrycatxd.RocketNews;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -28,9 +31,12 @@ import com.shobhitpuri.custombuttons.GoogleSignInButton;
 import static android.content.ContentValues.TAG;
 
 public class MAuthentication extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     int RC_SIGN_IN=0;
     String database_email;
     TextView textView;
+    ConstraintLayout constraintLayout;
 
 
     GoogleSignInClient mGoogleSignInClient;
@@ -45,15 +51,22 @@ public class MAuthentication extends AppCompatActivity {
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
+            constraintLayout.animate().translationY(-1000f).setDuration(500).start();
+
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
             Intent intent=new Intent(this,Genre.class);
+            account.getEmail();
+            editor.putString("Email",account.getEmail());
+            editor.apply();
+            editor.commit();
+
             lottieAnimationView.pauseAnimation();
             lottieAnimationView.cancelAnimation();
             startActivity(intent);
             finish();
             finishAndRemoveTask();
-            //overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up);
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
 
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -81,6 +94,11 @@ public class MAuthentication extends AppCompatActivity {
         setTheme(R.style.Theme_NewsX);
         setContentView(R.layout.mauthentication);
 
+        sharedPreferences =getSharedPreferences("EMAILPREFERENCES",Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        database_email=sharedPreferences.getString("Email",null);
+
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if(account!=null) {
             Intent intent;
@@ -92,8 +110,9 @@ public class MAuthentication extends AppCompatActivity {
             startActivity(intent);
             finish();
             finishAndRemoveTask();
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         }
-//
+        constraintLayout=findViewById(R.id.constraintLayout);
         signInButton=findViewById(R.id.signInButton);
         lottieAnimationView=findViewById(R.id.lottieAnimation);
         lottieAnimationView.playAnimation();
