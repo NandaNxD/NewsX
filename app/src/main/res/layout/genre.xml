@@ -8,19 +8,19 @@
     android:background="@drawable/nightrocket"
     tools:context=".Genre">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/openrocket"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/idk"
-        app:lottie_repeatMode="reverse" />
+<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--        android:id="@+id/lottieAnimation"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        app:layout_constraintBottom_toTopOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/openrocket"-->
+<!--        app:lottie_autoPlay="false"-->
+<!--        app:lottie_loop="true"-->
+<!--        app:lottie_rawRes="@raw/idk"-->
+<!--        app:lottie_repeatMode="reverse" />-->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/openrocket"
@@ -30,6 +30,7 @@
         android:elegantTextHeight="true"
         android:enabled="true"
         android:fontFamily="cursive"
+        android:hapticFeedbackEnabled="true"
         android:onClick="openMainActivity"
         android:text="Lets go!!!"
         android:textAllCaps="false"

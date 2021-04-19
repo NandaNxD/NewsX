@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.WindowManager;
@@ -51,7 +52,6 @@ public class MAuthentication extends AppCompatActivity {
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
-            constraintLayout.animate().translationY(-1000f).setDuration(500).start();
 
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
@@ -64,6 +64,8 @@ public class MAuthentication extends AppCompatActivity {
             lottieAnimationView.pauseAnimation();
             lottieAnimationView.cancelAnimation();
             startActivity(intent);
+            constraintLayout.animate().translationY(-1000f).setDuration(500).start();
+
             finish();
             finishAndRemoveTask();
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
@@ -117,12 +119,14 @@ public class MAuthentication extends AppCompatActivity {
         lottieAnimationView=findViewById(R.id.lottieAnimation);
         lottieAnimationView.playAnimation();
         signInButton.setOnClickListener(v -> {
+            signInButton.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
             switch (v.getId()){
                 case R.id.signInButton:
                     signIn();
                     break;
             }
         });
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()

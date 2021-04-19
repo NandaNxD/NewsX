@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.WindowManager;
@@ -20,6 +21,7 @@ public class Genre extends AppCompatActivity {
     MaterialButton button;
     ConstraintLayout constraintLayoutGenre;
     public void openMainActivity(View view){
+        button.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK);
         constraintLayoutGenre.animate().translationY(-1000f).setDuration(500).start();
         button.setAlpha(0f);
         Intent intent=new Intent(this,MainActivity.class);

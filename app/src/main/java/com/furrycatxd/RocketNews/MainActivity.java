@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     View content;
     int back_press_count=0;
     public void goToGenre(View view){
+        view.performHapticFeedback(HapticFeedbackConstants.GESTURE_END);
         Intent intent=new Intent(this,Genre.class);
         startActivity(intent);
         finish();
