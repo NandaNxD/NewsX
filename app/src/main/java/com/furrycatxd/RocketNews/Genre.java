@@ -43,7 +43,6 @@ public class Genre extends AppCompatActivity {
         //finishAndRemoveTask();
     }
 
-
     public int genreExistsInGenreList(String genreKeyWord){
         int genreListSize=genreList.size();
         for(int i=0;i<genreListSize;i++){
@@ -64,7 +63,6 @@ public class Genre extends AppCompatActivity {
             else{
                 genreList.remove("Politics");
             }
-
         }
         else if(R.id.science==view.getId()){
             existsG=genreExistsInGenreList("Science");
@@ -163,7 +161,6 @@ public class Genre extends AppCompatActivity {
         genre[6]=findViewById(R.id.cricket);
         genre[7]=findViewById(R.id.medical);
         genre[8]=findViewById(R.id.lifestyle);
-
     }
 
 //    @Override

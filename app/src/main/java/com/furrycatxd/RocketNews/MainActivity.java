@@ -81,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         content=findViewById(android.R.id.content);
         cardView=findViewById(R.id.cardView);
         cardView.setCardBackgroundColor(Color.WHITE);
-
-
+        
 
     }
 }
