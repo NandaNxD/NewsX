@@ -38,8 +38,6 @@ public class MAuthentication extends AppCompatActivity {
     String database_email;
     TextView textView;
     ConstraintLayout constraintLayout;
-
-
     GoogleSignInClient mGoogleSignInClient;
     LottieAnimationView lottieAnimationView;
     SignInButton signInButton;
@@ -52,7 +50,6 @@ public class MAuthentication extends AppCompatActivity {
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
-
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
             Intent intent=new Intent(this,Genre.class);
@@ -64,17 +61,17 @@ public class MAuthentication extends AppCompatActivity {
             lottieAnimationView.pauseAnimation();
             lottieAnimationView.cancelAnimation();
             startActivity(intent);
-            constraintLayout.animate().translationY(-1000f).setDuration(500).start();
+            //constraintLayout.animate().translationY(-1000f).setDuration(500).start();
+            overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up);
 
             finish();
             finishAndRemoveTask();
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            //overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
 
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
 //            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-
         }
     }
 
@@ -98,7 +95,6 @@ public class MAuthentication extends AppCompatActivity {
 
         sharedPreferences =getSharedPreferences("EMAILPREFERENCES",Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-
         database_email=sharedPreferences.getString("Email",null);
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
@@ -112,7 +108,7 @@ public class MAuthentication extends AppCompatActivity {
             startActivity(intent);
             finish();
             finishAndRemoveTask();
-            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            //overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up);
         }
         constraintLayout=findViewById(R.id.constraintLayout);
         signInButton=findViewById(R.id.signInButton);
@@ -126,7 +122,6 @@ public class MAuthentication extends AppCompatActivity {
                     break;
             }
         });
-
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()

@@ -15,8 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
         >
-        <activity android:name=".WebActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".WebActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Genre"
             android:screenOrientation="portrait" />

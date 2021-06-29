@@ -8,24 +8,24 @@
     android:background="@drawable/nightrocket"
     tools:context=".Genre">
 
-<!--    <com.airbnb.lottie.LottieAnimationView-->
-<!--        android:id="@+id/lottieAnimation"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        app:layout_constraintBottom_toTopOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/openrocket"-->
-<!--        app:lottie_autoPlay="false"-->
-<!--        app:lottie_loop="true"-->
-<!--        app:lottie_rawRes="@raw/idk"-->
-<!--        app:lottie_repeatMode="reverse" />-->
+    <!--    <com.airbnb.lottie.LottieAnimationView-->
+    <!--        android:id="@+id/lottieAnimation"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        app:layout_constraintBottom_toTopOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/openrocket"-->
+    <!--        app:lottie_autoPlay="false"-->
+    <!--        app:lottie_loop="true"-->
+    <!--        app:lottie_rawRes="@raw/idk"-->
+    <!--        app:lottie_repeatMode="reverse" />-->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/openrocket"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="179dp"
+        android:layout_height="66dp"
         android:layout_margin="50dp"
         android:elegantTextHeight="true"
         android:enabled="true"
@@ -39,8 +39,156 @@
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.903" />
+        app:layout_constraintVertical_bias="0.976" />
+
+    <Button
+        android:id="@+id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="saveGenre"
+        android:text="Space"
+        android:textColor="#FFF1F1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/openrocket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.249" />
+
+    <Button
+        android:id="@+id/science"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="saveGenre"
+        android:text="Science"
+        android:textColor="#FFF1F1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/openrocket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205" />
+
+    <Button
+        android:id="@+id/politics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="saveGenre"
+        android:text="Politics"
+        android:textColor="#FFF1F1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/openrocket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <Button
+        android:id="@+id/sports"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="saveGenre"
+        android:text="Sports"
+        android:textColor="#FFF1F1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space"
+        app:layout_constraintVertical_bias="0.101" />
+
+    <Button
+        android:id="@+id/business"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="saveGenre"
+        android:text="Business"
+        android:textColor="#FFF1F1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/openrocket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/science"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/football"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="saveGenre"
+        android:text="Football"
+        android:textColor="#FFF1F1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/business"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/science"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/lifestyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="saveGenre"
+        android:text="Lifestyle"
+        android:textColor="#FFF1F1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cricket"
+        app:layout_constraintVertical_bias="0.254" />
+
+    <Button
+        android:id="@+id/medical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+        android:longClickable="false"
+        android:onClick="saveGenre"
+        android:text="Medical"
+        android:textColor="#FFF1F1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/openrocket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/business"
+        app:layout_constraintVertical_bias="0.184" />
+
+    <Button
+        android:id="@+id/cricket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hapticFeedbackEnabled="true"
+        android:onClick="saveGenre"
+        android:text="Cricket"
+        android:textColor="#FFF1F1"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/openrocket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sports"
+        app:layout_constraintVertical_bias="0.277" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
