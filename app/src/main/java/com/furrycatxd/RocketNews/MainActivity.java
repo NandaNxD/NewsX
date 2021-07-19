@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         // Fetch Data from internet
         // Change returntype
 
+
     }
 
     public void sendNewsWebsite(String urlx) {
@@ -69,10 +70,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void setListView() {
         // Set listView for news
+
     }
 
     public void refreshListView() {
         // refresh ListView for news app
+
     }
 
 //    @Override
@@ -100,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         LayoutParams innerCardLayout=new LayoutParams(LayoutParams.MATCH_PARENT,500);
-
 
 
         for(int i = 0; i <= 10; i++){
@@ -133,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
             innerLayout.addView(newslink);
             innerLayout.addView(briefDescription);
             innerLayout.setOrientation(LinearLayout.VERTICAL);
-
             outerCard.addView(innerLayout);
-            recyclerView.addView(outerCard);
+            
+            //recyclerView.addView(outerCard);
             //linearLayout.addView(outerCard);
         }
     }
