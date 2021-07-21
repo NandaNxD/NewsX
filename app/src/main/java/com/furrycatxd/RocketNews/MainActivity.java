@@ -5,13 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     String API_KEY = "115e4b65479f43f29bbdb75f1d9047c0";
     Intent webIntent;
     RecyclerView recyclerView;
-    List<Articles> articles=new ArrayList<>();
+    List<Articles> articles;
     Adapter adapter;
 
     public void goToGenre(View view) {
@@ -45,21 +45,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadNews() {
         // Fetch Data from internet
-        // Change returntype
-
         Call<News> call=ApiClient.getInstance().getApi().getNews(getCountry(),API_KEY);
         call.enqueue(new Callback<News>() {
             @Override
             public void onResponse(Call<News> call, Response<News> response) {
-                articles.clear();
-                assert response.body() != null;
-                articles=response.body().getArticles();
-                adapter=new Adapter(MainActivity.this,articles);
-                recyclerView.setAdapter(adapter);
+                Log.i("Response",(Boolean.toString(response.isSuccessful())));
+                if(response.isSuccessful() && response.body().getArticles()!=null){
+                    articles.clear();
+                    articles=response.body().getArticles();
+                    adapter=new Adapter(MainActivity.this,articles);
+                    recyclerView.setAdapter(adapter);
+                }
+                else{
+                    Log.i("ArticlesError","No articles");
+                }
             }
             @Override
             public void onFailure(Call<News> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Hello",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"No Response",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -75,10 +78,6 @@ public class MainActivity extends AppCompatActivity {
         goToWebActivity();
     }
 
-    public void setListView() {
-        // Set listView for news
-
-    }
 
     public void refreshListView() {
         // refresh ListView for news app
@@ -91,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.mainActivityTheme);
         setContentView(R.layout.activity_main);
 
+        articles=new ArrayList<>();
         recyclerView=findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
+        //recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         loadNews();
     }

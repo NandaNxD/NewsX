@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -57,6 +58,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         TextView title,desc,url;
         ImageView imageView;
         CardView innerCard,outerCard;
+        LinearLayout linearLayoutX;
         OnItemClickListener onItemClickListener;
 
         public MyViewHolder(View itemView, OnItemClickListener onItemClickListener){
@@ -68,6 +70,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             imageView=itemView.findViewById(R.id.image);
             innerCard=itemView.findViewById(R.id.cardInner);
             outerCard=itemView.findViewById(R.id.cardOuter);
+            linearLayoutX=itemView.findViewById(R.id.linearLayoutX);
             this.onItemClickListener=onItemClickListener;
 
         }

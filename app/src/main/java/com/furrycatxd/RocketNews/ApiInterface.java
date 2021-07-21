@@ -1,11 +1,12 @@
 package com.furrycatxd.RocketNews;
 
-import com.furrycatxd.RocketNews.News;
-
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
-    @GET("News")
-    Call<News> getNews(String country,String apiKey);
+    @GET("top-headlines")
+    Call<News> getNews(
+             @Query("country") String country,
+             @Query("apiKey") String apiKey);
 }
