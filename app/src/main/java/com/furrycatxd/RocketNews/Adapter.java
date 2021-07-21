@@ -1,39 +1,27 @@
 package com.furrycatxd.RocketNews;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
-
-import org.w3c.dom.Text;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     private List<Articles> articles;
-    private Context context;
+    private final Context context;
     private OnItemClickListener onItemClickListener;
 
-    @NonNull
+    public Adapter(Context context,List<Articles> list){
+        this.articles=list;
+        this.context=context;
+    }
 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
@@ -49,33 +37,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         holder.title.setText(model.getTitle());
         holder.url.setText(model.getUrl());
         holder.desc.setText(model.getDescription());
-        RequestOptions requestOptions=new RequestOptions();
-        requestOptions.placeholder(Utils.getRandomDrawbleColor());
-        requestOptions.error(Utils.getRandomDrawbleColor());
-        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
-        requestOptions.centerCrop();
-
-        Glide.with(context)
-                .load(model.getUrlToImage()).apply(requestOptions).listener(new RequestListener<Drawable>() {
-            @Override
-            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                return false;
-            }
-
-            @Override
-            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                return false;
-            }
-        });
-
-        //holder.imageView.setImageURI(model.getUrlToImage());
-        //holder.imageView.setBackground(model.getUrlToImage());
+        Picasso.with(context).load(model.getUrlToImage()).into(holder.imageView);
     }
 
     @Override
-    public int getItemCount() {
-        return 0;
+    public int getItemCount(){
+        return articles.size();
     }
+
     public void setOnItemClickListener(OnItemClickListener onItemClickListener){
         this.onItemClickListener=onItemClickListener;
     }
@@ -83,12 +52,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     public interface OnItemClickListener{
         void onItemClick(View view, int position);
     }
+
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView title,desc,url;
         ImageView imageView;
-        ProgressBar progressBar;
-
+        CardView innerCard,outerCard;
         OnItemClickListener onItemClickListener;
+
         public MyViewHolder(View itemView, OnItemClickListener onItemClickListener){
             super(itemView);
             itemView.setOnClickListener(this);
@@ -96,13 +66,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             url=itemView.findViewById(R.id.url);
             desc=itemView.findViewById(R.id.desc);
             imageView=itemView.findViewById(R.id.image);
-            progressBar=itemView.findViewById(R.id.progress_load_image);
+            innerCard=itemView.findViewById(R.id.cardInner);
+            outerCard=itemView.findViewById(R.id.cardOuter);
             this.onItemClickListener=onItemClickListener;
+
         }
 
         @Override
         public void onClick(View v) {
             onItemClickListener.onItemClick(v,getAdapterPosition());
         }
+
     }
 }

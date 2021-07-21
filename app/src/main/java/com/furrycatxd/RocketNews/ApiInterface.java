@@ -1,4 +1,4 @@
-package Api;
+package com.furrycatxd.RocketNews;
 
 import com.furrycatxd.RocketNews.News;
 

@@ -1,8 +1,4 @@
-package Api;
-
-import com.google.android.gms.common.api.Api;
-
-import okhttp3.OkHttpClient;
+package com.furrycatxd.RocketNews;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -15,14 +11,15 @@ public class ApiClient {
     private ApiClient(){
         retrofit=new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
     }
+
     public static synchronized ApiClient getInstance(){
         if(apiClient==null){
             apiClient=new ApiClient();
         }
         return apiClient;
     }
+
     public ApiInterface getApi() {
         return retrofit.create(ApiInterface.class);
     }
-    
 }
