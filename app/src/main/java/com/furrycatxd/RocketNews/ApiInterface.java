@@ -9,4 +9,10 @@ public interface ApiInterface {
     Call<News> getNews(
              @Query("country") String country,
              @Query("apiKey") String apiKey);
+
+    @GET("everything")
+    Call<News> getEverything(
+            @Query("q") String topic,
+            @Query("apiKey") String apiKey);
+
 }

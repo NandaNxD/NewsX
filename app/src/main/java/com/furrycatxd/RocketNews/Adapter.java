@@ -1,6 +1,7 @@
 package com.furrycatxd.RocketNews;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
@@ -39,6 +39,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         holder.url.setText(model.getUrl());
         holder.desc.setText(model.getDescription());
         Picasso.with(context).load(model.getUrlToImage()).into(holder.imageView);
+        holder.outerCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent=new Intent(context.getApplicationContext(),WebActivity.class);
+                intent.putExtra("NEWSURL",model.getUrl());
+                intent.putExtra("NEWSSOURCE",model.getSource().getName());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -72,13 +81,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             outerCard=itemView.findViewById(R.id.cardOuter);
             linearLayoutX=itemView.findViewById(R.id.linearLayoutX);
             this.onItemClickListener=onItemClickListener;
-
         }
 
         @Override
         public void onClick(View v) {
             onItemClickListener.onItemClick(v,getAdapterPosition());
         }
-
     }
+
 }

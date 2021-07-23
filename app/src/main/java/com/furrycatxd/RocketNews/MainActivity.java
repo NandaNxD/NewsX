@@ -3,15 +3,12 @@ package com.furrycatxd.RocketNews;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.HapticFeedbackConstants;
-import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,33 +16,14 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     String API_KEY = "115e4b65479f43f29bbdb75f1d9047c0";
-    Intent webIntent;
     RecyclerView recyclerView;
     List<Articles> articles;
+    TextView searchTextView;
     Adapter adapter;
-
-    public void goToGenre(View view) {
-        view.performHapticFeedback(HapticFeedbackConstants.GESTURE_END);
-        Intent intent = new Intent(this, Genre.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
-    }
-
-    // For the button
-    public void goToWebActivity(View view) {
-        webIntent = new Intent(this, WebActivity.class);
-        startActivity(webIntent);
-    }
-
-    // For the usual stuff
-    public void goToWebActivity() {
-        webIntent = new Intent(this, WebActivity.class);
-        startActivity(webIntent);
-    }
 
     public void loadNews() {
         // Fetch Data from internet
-        Call<News> call=ApiClient.getInstance().getApi().getNews(getCountry(),API_KEY);
+        Call<News> call=ApiClient.getInstance().getApi().getEverything("science",API_KEY);
         call.enqueue(new Callback<News>() {
             @Override
             public void onResponse(Call<News> call, Response<News> response) {
@@ -53,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 if(response.isSuccessful() && response.body().getArticles()!=null){
                     articles.clear();
                     articles=response.body().getArticles();
+                    Log.i("ArticlesSize",Integer.toString(articles.size()));
                     adapter=new Adapter(MainActivity.this,articles);
                     recyclerView.setAdapter(adapter);
                 }
@@ -67,21 +46,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public String getCountry(){
-        Locale locale=Locale.getDefault();
-        String country=locale.getCountry();
-        return country.toLowerCase();
-    }
-
-    public void sendNewsWebsite(String urlx) {
-        webIntent.putExtra("NEWSURL", urlx);
-        goToWebActivity();
-    }
-
-
-    public void refreshListView() {
+    public void refreshNews() {
         // refresh ListView for news app
 
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        if(!searchTextView.isFocused()){
+            super.onBackPressed();
+        }
+        else{
+            searchTextView.clearFocus();
+        }
     }
 
     @Override
@@ -92,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         articles=new ArrayList<>();
         recyclerView=findViewById(R.id.recyclerView);
-        //recyclerView.setHasFixedSize(true);
+        searchTextView=findViewById(R.id.searchTextView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         loadNews();
     }

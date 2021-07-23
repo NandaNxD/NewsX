@@ -3,19 +3,11 @@ package com.furrycatxd.RocketNews;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.HapticFeedbackConstants;
-import android.view.View;
-import android.view.ViewAnimationUtils;
-import android.view.WindowManager;
-import android.view.animation.Animation;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -26,10 +18,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.button.MaterialButton;
-import com.shobhitpuri.custombuttons.GoogleSignInButton;
 
-import static android.content.ContentValues.TAG;
 
 public class MAuthentication extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -45,14 +34,13 @@ public class MAuthentication extends AppCompatActivity {
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent,RC_SIGN_IN);
-        //overridePendingTransition(R.anim.slide_in_up,R.anim.slide_out_up);
     }
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
-            Intent intent=new Intent(this,Genre.class);
+            Intent intent=new Intent(this,MainActivity.class);
             account.getEmail();
             editor.putString("Email",account.getEmail());
             editor.apply();
@@ -74,6 +62,7 @@ public class MAuthentication extends AppCompatActivity {
 //            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
         }
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -100,11 +89,7 @@ public class MAuthentication extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         if(account!=null) {
             Intent intent;
-            if (database_email != null) {
-                intent = new Intent(getApplicationContext(), MainActivity.class);
-            } else {
-                intent = new Intent(getApplicationContext(), Genre.class);
-            }
+            intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
             finishAndRemoveTask();
@@ -130,7 +115,4 @@ public class MAuthentication extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(getApplicationContext(), gso);
 
     }
-
-
-
 }

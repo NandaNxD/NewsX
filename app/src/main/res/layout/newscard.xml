@@ -1,29 +1,30 @@
 <androidx.cardview.widget.CardView
+    android:layout_margin="10dp"
     android:id="@+id/cardOuter"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="80dp"
-    android:paddingEnd="80dp"
     app:cardCornerRadius="30dp"
     app:cardElevation="10dp"
-    app:cardBackgroundColor="#FFFFFF"
+    app:cardBackgroundColor="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
         <LinearLayout
             android:id="@+id/linearLayoutX"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardInner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:padding="20dp"
+                android:layout_height="200dp"
                 app:cardElevation="50dp"
                 app:cardCornerRadius="30dp">
                 <ImageView
-
                     android:id="@+id/image"
                     android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
                     android:layout_width="match_parent"
                     android:cropToPadding="true"
                     android:src="@drawable/common_google_signin_btn_text_dark"/>
@@ -31,12 +32,13 @@
             <TextView
                 android:paddingLeft="10dp"
                 android:paddingEnd="10dp"
-                android:paddingTop="5dp"
+                android:paddingTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/title"
+                android:background="@color/black"
+                android:textColor="@color/white"
                 android:text="Tesla launches full self driving subscriptions"
-                android:maxHeight="50dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 />
@@ -44,6 +46,8 @@
                 android:id="@+id/url"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:background="@color/black"
                 android:paddingLeft="10dp"
                 android:paddingEnd="10dp"
                 android:textColor="@color/dark_blue"
@@ -54,12 +58,14 @@
                 android:id="@+id/desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="50dp"
+                android:background="@color/black"
+                android:textColor="@color/grey"
                 android:paddingTop="5dp"
                 android:paddingLeft="10dp"
                 android:paddingEnd="10dp"
                 android:textSize="15sp"
                 android:singleLine="false"
+                android:paddingBottom="10dp"
                 android:text="Description is "/>
         </LinearLayout>
 </androidx.cardview.widget.CardView>
