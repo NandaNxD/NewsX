@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
+
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     private List<Articles> articles;
     private final Context context;
@@ -31,22 +32,32 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
         return new MyViewHolder(view,onItemClickListener);
     }
 
+    public void shareLink(View view){
+
+    }
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holders, int position) {
         final MyViewHolder holder=holders;
         Articles model=articles.get(position);
         holder.title.setText(model.getTitle());
-        holder.url.setText(model.getUrl());
+        holder.sourceName.setText(model.getSource().getName());
         holder.desc.setText(model.getDescription());
         Picasso.with(context).load(model.getUrlToImage()).into(holder.imageView);
-        holder.outerCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v){
-                Intent intent=new Intent(context.getApplicationContext(),WebActivity.class);
-                intent.putExtra("NEWSURL",model.getUrl());
-                intent.putExtra("NEWSSOURCE",model.getSource().getName());
-                context.startActivity(intent);
-            }
+
+//        holder.shareButtonMain.setOnClickListener(v -> {
+//            Intent shareLinkIntent=new Intent();
+//            shareLinkIntent.setAction(Intent.ACTION_SEND);
+//            shareLinkIntent.putExtra(Intent.EXTRA_TEXT,model.getUrl());
+//            shareLinkIntent.setType("text/plane");
+//            context.startActivity(shareLinkIntent);
+//        });
+
+        holder.outerCard.setOnClickListener(v -> {
+            Intent intent=new Intent(context.getApplicationContext(),WebActivity.class);
+            intent.putExtra("NEWSURL",model.getUrl());
+            intent.putExtra("NEWSSOURCE",model.getSource().getName());
+            context.startActivity(intent);
         });
     }
 
@@ -64,8 +75,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView title,desc,url;
+        TextView title,desc,sourceName;
         ImageView imageView;
+        //Button shareButtonMain;
         CardView innerCard,outerCard;
         LinearLayout linearLayoutX;
         OnItemClickListener onItemClickListener;
@@ -74,12 +86,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
             super(itemView);
             itemView.setOnClickListener(this);
             title=itemView.findViewById(R.id.title);
-            url=itemView.findViewById(R.id.url);
+            sourceName=itemView.findViewById(R.id.sourceName);
             desc=itemView.findViewById(R.id.desc);
             imageView=itemView.findViewById(R.id.image);
             innerCard=itemView.findViewById(R.id.cardInner);
             outerCard=itemView.findViewById(R.id.cardOuter);
             linearLayoutX=itemView.findViewById(R.id.linearLayoutX);
+            //shareButtonMain=itemView.findViewById(R.id.shareButtonMain);
             this.onItemClickListener=onItemClickListener;
         }
 

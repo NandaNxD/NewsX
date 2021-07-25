@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     tools:context=".MainActivity">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hapticFeedbackEnabled="true"
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -28,34 +40,38 @@
         android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        app:columnCount="2"
         android:layout_margin="10dp"
-        app:rowCount="1"
         android:outlineAmbientShadowColor="@color/white"
+        app:columnCount="2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0"
+        app:rowCount="1">
 
         <EditText
-            app:layout_columnWeight="1"
             android:id="@+id/searchTextView"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:hint="Search"
+            android:imeOptions="actionSend"
+            android:inputType="text"
             android:paddingLeft="15dp"
-            android:textColorHint="@color/white"
             android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            app:layout_row="0"
+            android:textColorHint="@color/white"
             app:layout_column="0"
-            />
+            app:layout_columnWeight="1"
+            app:layout_row="0" />
 
         <ImageView
-            android:id="@+id/searchView"
-            android:layout_width="40dp"
+            android:id="@+id/searchButton"
+            android:layout_width="37dp"
             android:layout_height="wrap_content"
             android:background="@drawable/search"
             android:clickable="true"
             android:hapticFeedbackEnabled="true"
+            android:onClick="searchNews"
             android:paddingRight="30dp"
             app:layout_column="1"
             app:layout_row="0" />

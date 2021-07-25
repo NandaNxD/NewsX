@@ -3,13 +3,9 @@ package com.furrycatxd.RocketNews;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
-import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.TextView;
-import java.util.HashMap;
 
 
 public class WebActivity extends AppCompatActivity {
@@ -19,10 +15,18 @@ public class WebActivity extends AppCompatActivity {
     TextView topurldisplay;
     String newsurl;
 
-    public void goToMainActivity(View view){
-        intent=new Intent(this,MainActivity.class);
-        startActivity(intent);
+    public void endWebActivity(View view){
+        finish();
     }
+
+    public void shareLink(View view){
+        Intent shareLinkIntent=new Intent();
+        shareLinkIntent.setAction(Intent.ACTION_SEND);
+        shareLinkIntent.putExtra(Intent.EXTRA_TEXT,newsurl);
+        shareLinkIntent.setType("text/plane");
+        startActivity(shareLinkIntent);
+    }
+
     public String getWebSiteFromIntent(){
         intent=getIntent();
         return intent.getStringExtra("NEWSURL");
@@ -37,6 +41,7 @@ public class WebActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        finish();
         super.onBackPressed();
     }
 
@@ -49,7 +54,5 @@ public class WebActivity extends AppCompatActivity {
         sourceTextView.setText(getSourceFromIntent());
         newsurl=getWebSiteFromIntent();
         loadWebSite(newsurl);
-
-
     }
 }
