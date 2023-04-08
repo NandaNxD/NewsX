@@ -1,5 +1,5 @@
 # RocketNews
-Live News App that shows news articles at the Speed of Rocket.
+Live News App that shows news articles at the Speed of 🚀.
 It uses News Api to fetch details
 
 ![image](https://user-images.githubusercontent.com/65838540/230706653-a5106374-3f06-49b1-8c12-3939cb99b311.png)
